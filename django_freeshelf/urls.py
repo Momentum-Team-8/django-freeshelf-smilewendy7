@@ -19,7 +19,9 @@ from books import views as books_views
 
 urlpatterns = [
     ### add registration path : what to do with this?
+    path('', books_views.homepage, name='home'),
     path('accounts/', include('registration.backends.default.urls')),
+    path('books/', books_views.list_books, name='list_books'),
     path("admin/", admin.site.urls),
-    path('', books_views.list_books, name='list_books'),
+    
 ]

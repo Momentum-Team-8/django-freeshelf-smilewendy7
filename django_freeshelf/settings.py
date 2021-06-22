@@ -41,7 +41,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
-    'django.contrib.sites',
+    # 'django.contrib.sites', does not need this 
     'registration',#should be immediately above 'django.contrib.admin'
     "django.contrib.admin",
     "django.contrib.auth",
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
 #### registration
 ACCOUNT_ACTIVATION_DAYS = 7 
 REGISTRATION_AUTO_LOGIN = True 
+LOGIN_REDIRECT_URL = "/"
 
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
@@ -122,7 +123,7 @@ AUTH_PASSWORD_VALIDATORS = [
 
 LANGUAGE_CODE = "en-us"
 
-TIME_ZONE = "UTC"
+TIME_ZONE = "EST"
 
 USE_I18N = True
 
