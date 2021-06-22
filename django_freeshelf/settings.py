@@ -41,6 +41,8 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'django.contrib.sites',
+    'registration',#should be immediately above 'django.contrib.admin'
     "django.contrib.admin",
     "django.contrib.auth",
     "django.contrib.contenttypes",
@@ -51,6 +53,10 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "books",
 ]
+
+#### registration
+ACCOUNT_ACTIVATION_DAYS = 7 
+REGISTRATION_AUTO_LOGIN = True 
 
 MIDDLEWARE = [
     "debug_toolbar.middleware.DebugToolbarMiddleware",
