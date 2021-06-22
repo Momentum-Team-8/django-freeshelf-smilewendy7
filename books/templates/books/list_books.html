@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- this is where we rend album -->
+<h1>All Books</h1>
+
+<div>
+    {% for book in books %}
+        <div class="card">
+            {% if book.title %}
+                <p>{{book.title}}</p>
+                <p>{{book.description}}</p>
+                <p>{{book.created_at}}</p>
+                <p>{{book.book_url}}</p>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+{% endblock %}
