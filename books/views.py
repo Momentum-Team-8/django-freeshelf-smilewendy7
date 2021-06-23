@@ -15,6 +15,7 @@ def homepage(request):
 @login_required # this is a decorator or function that will redirect you to login page
 def list_books(request):
     books = Book.objects.all()
+    ### add category in book lists???
     return render(request, "books/list_books.html",
                   {"books": books})
 

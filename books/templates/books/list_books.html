@@ -1,20 +1,26 @@
 {% extends "base.html" %}
 
 {% block content %}
+    
+{% for book in books %}
+    <div class="card">
+        {% if book.title %}
+            <p>{{book.title}}</p>
+            <p>{{book.description}}</p>
+            <p>{{book.created_at}}</p>
+            <p>{{book.book_url}}</p>
+        {% endif %}
+    </div>
 
+    <div>
+        <p>
+            <!-- book.category.all -->
+            {% for each in book.category.all %}
+            <a href="{% url 'show_categ' slug=each.slug %}">{{each.category_name}}</a>
+            {% endfor %}
+        </p>
+    </div> 
 
-<div>
-    {% for book in books %}
-        <div class="card">
-            {% if book.title %}
-                <p>{{book.title}}</p>
-                <p>{{book.description}}</p>
-                <p>{{book.created_at}}</p>
-                <p>{{book.book_url}}</p>
-            {% endif %}
-        </div>
-    {% endfor %}
-</div>
-
+{% endfor %}
 
 {% endblock %}

@@ -23,6 +23,7 @@ urlpatterns = [
     path('accounts/', include('registration.backends.simple.urls')),
     # path('accounts/', include('registration.backends.default.urls')),
     path('books/', books_views.list_books, name='list_books'),
+    # path('categ/',books_views.show_categ, name="show_categ"),
     path("categ/<slug:slug>",books_views.show_categ, name="show_categ"),
     path("admin/", admin.site.urls),
 ]
