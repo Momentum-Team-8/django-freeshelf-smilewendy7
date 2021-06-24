@@ -28,5 +28,18 @@ def show_categ(request, slug):
     #### important!!! 
     books = categ.books.all()
 
+    print(str(books))
     return render(request, "books/show_categ.html", {"categ": categ, "books": books})
+
+fbs = []
+### click on favorite ##### 
+def favorite_books(request,pk):
+    book = get_object_or_404(Book, pk=pk)
+    ### if click on favorite 
+    fbs.append(book.title)
+    # return redirect ("list_fbs")
+    return render(request, "favorite_book.html",
+                    {"fbs": fbs})
+
+
 

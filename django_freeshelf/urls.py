@@ -25,5 +25,7 @@ urlpatterns = [
     path('books/', books_views.list_books, name='list_books'),
     # path('categ/',books_views.show_categ, name="show_categ"),
     path("categ/<slug:slug>",books_views.show_categ, name="show_categ"),
+    path("fbs/",books_views.favorite_books, name="list_fbs"),
+
     path("admin/", admin.site.urls),
 ]

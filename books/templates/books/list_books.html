@@ -6,6 +6,7 @@
     <div class="card">
         {% if book.title %}
             <p>{{book.title}}</p>
+            <button> favorite </button>
             <p>{{book.description}}</p>
             <p>{{book.created_at}}</p>
             <p>{{book.book_url}}</p>
@@ -20,7 +21,10 @@
             {% endfor %}
         </p>
     </div> 
-
 {% endfor %}
+
+<p>
+    <a href="{% url 'list_fbs'%}">Favorite Books</a>
+</p>
 
 {% endblock %}

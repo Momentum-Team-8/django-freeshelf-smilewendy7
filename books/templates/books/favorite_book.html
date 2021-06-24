@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+    
+{% for fb in fbs %}
+    <div class="card">
+            <p>{{fb}}</p>
+    </div>
+{% endfor %}
+
+{% endblock %}
