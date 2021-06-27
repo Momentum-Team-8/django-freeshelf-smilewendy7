@@ -23,6 +23,11 @@ class Book (models.Model):
     description= models.CharField(max_length=255)
     created_at =models.DateTimeField(auto_now_add=False)
     book_url =models.CharField(max_length=255)
+    favorites = models.ManyToManyField(User, related_name= "books")
+
+    ###count favorites 
+    # def total_favorites(self):
+    #     return self.favorites.count()
 
     def __str__(self):
         ### this change how it looks in shell

@@ -6,7 +6,6 @@
     <div class="card">
         {% if book.title %}
             <p>{{book.title}}</p>
-            <button> favorite </button>
             <p>{{book.description}}</p>
             <p>{{book.created_at}}</p>
             <p>{{book.book_url}}</p>
@@ -15,6 +14,8 @@
 
     <div>
         <p>
+            <a href="{% url 'show_details' pk=book.pk %}">Details</a>
+
             <!-- book.category.all -->
             {% for each in book.category.all %}
             <a href="{% url 'show_categ' slug=each.slug %}">{{each.category_name}}</a>
@@ -22,9 +23,5 @@
         </p>
     </div> 
 {% endfor %}
-
-<p>
-    <a href="{% url 'list_fbs'%}">Favorite Books</a>
-</p>
 
 {% endblock %}

@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<!-- this is where we show details of the album -->
+<h1>Book Details</h1>
+
+<div>
+        <div class="card">
+                {% if book.title %}
+                <p>{{book.title}}</p>
+                <p>{{book.author}}</p>
+                {% endif %}
+        </div>
+</div>
+
+<form action="{%url 'favorite_book' book.pk %}" 
+method = "POST">
+        {% csrf_token %}
+        {% if book in user.books.all %}
+                <button type= "submit", name = "book_id", value = {{book.id}}>Favorite
+                </button> - {{ book.favorites.count }} Likes
+        {% else %}
+                <button type= "submit", name = "book_id", value = {{book.id}}>Favorited
+                </button> - {{ book.favorites.count}} Likes
+        {% endif %}
+
+</form>
+{% endblock %}

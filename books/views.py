@@ -20,8 +20,12 @@ def list_books(request):
                   {"books": books})
 
 
-##### categories coding????
 #### show category
+
+def show_details(request, pk):
+    book = get_object_or_404(Book, pk=pk)
+    return render(request, "books/show_details.html", {"book": book})
+
 
 def show_categ(request, slug):
     categ = get_object_or_404(Category, slug=slug)
@@ -31,15 +35,29 @@ def show_categ(request, slug):
     print(str(books))
     return render(request, "books/show_categ.html", {"categ": categ, "books": books})
 
-fbs = []
+
 ### click on favorite ##### 
 def favorite_books(request,pk):
+    user = request.user
     book = get_object_or_404(Book, pk=pk)
-    ### if click on favorite 
-    fbs.append(book.title)
-    # return redirect ("list_fbs")
-    return render(request, "favorite_book.html",
-                    {"fbs": fbs})
+    ####???
+    if user.books.filter(id=book.id).exists():
+        book.favorites.remove(user)
+    ####???
+    else:
+        book.favorites.add(user)
 
+    return redirect("show_details", pk=pk)
 
+#### show favos  
+# class BookDetailView():
+#     model = Book
+#     template_name = 'show_details.html'
+
+#     def get_context_data(self, *args, **kwargs):
+#         stuff= get_object_or_404(Book, id= self.kwargs['pk'])
+#         context = super(BookDetailView, self).get_context_data
+#         total_favorites = stuff.total_favorites()
+#         context['total_favorites'] = total_favorites
+#         return context 
 
