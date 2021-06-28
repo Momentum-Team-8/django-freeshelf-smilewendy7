@@ -1,18 +1,24 @@
 {% extends "base.html" %}
 
 {% block content %}
+<script type = "text/javascript" src = "https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/highlight.min.js">
+</script>
+<script>hljs.highlightAll();</script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.0.1/styles/agate.min.css">
 <!-- this is where we show details of the album -->
 <h1>Book Details</h1>
 
-<div>
-        <div class="card">
+<pre>
+        <code>
                 {% if book.title %}
                 <p>{{book.title}}</p>
                 <p>{{book.author}}</p>
                 {% endif %}
-        </div>
-</div>
-
+        </code>       
+</pre>
+<button class = "copy-btn" data-book= {{book.title}}>click</button>
+<br>
+<br>
 <form action="{%url 'favorite_book' book.pk %}" 
 method = "POST">
         {% csrf_token %}

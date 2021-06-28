@@ -16,6 +16,8 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 from books import views as books_views
+from django.conf.urls.static import static
+from django.conf import settings
 
 urlpatterns = [
     ### add registration path : what to do with this?
@@ -23,11 +25,12 @@ urlpatterns = [
     path('accounts/', include('registration.backends.simple.urls')),
     # path('accounts/', include('registration.backends.default.urls')),
     path('books/', books_views.list_books, name='list_books'),
-
     ## show details
     path("details/<int:pk>", books_views.show_details, name="show_details"),
     path("categ/<slug:slug>",books_views.show_categ, name="show_categ"),
     path("favorite/<int:pk>",books_views.favorite_books, name = "favorite_book"),
+    ### search books
+    path('search_books', books_views.search_books, name='search_books'),
 
     path("admin/", admin.site.urls),
-]
+] + static(settings.STATIC_URL, docuement_root=settings.STATIC_ROOT )

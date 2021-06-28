@@ -5,11 +5,21 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- custom js ???-->
+  <script src={% static 'main.js' %}  defer></script>
+
   <title>Books</title>
 </head>
 <body>
   <h1>All Books</h1>
   <nav>
+    <!-- search -->
+    <form method=POST action= "{% url 'search_books' %}">
+      {% csrf_token %}
+      <input type="search" placeholder="Search Books" aria-label= 
+      "Search" name="searched">
+      <button type="submit">Search</button>
+    </form>
     {% if user.is_authenticated %}
     <p>Hello, {{user.username}}!</p>
     <a href="{% url 'auth_logout'%}">Logout</a>

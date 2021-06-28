@@ -49,15 +49,18 @@ def favorite_books(request,pk):
 
     return redirect("show_details", pk=pk)
 
-#### show favos  
-# class BookDetailView():
-#     model = Book
-#     template_name = 'show_details.html'
 
-#     def get_context_data(self, *args, **kwargs):
-#         stuff= get_object_or_404(Book, id= self.kwargs['pk'])
-#         context = super(BookDetailView, self).get_context_data
-#         total_favorites = stuff.total_favorites()
-#         context['total_favorites'] = total_favorites
-#         return context 
+def search_books(request):
+    if request.method == "POST":
+        searched = request.POST['searched']
+        books = Book.objects.filter(title__contains= searched)
+
+        return render (request, 'books/search_books.html',
+        {'searched':searched,
+        'books':books})
+    else:
+        return render (request, 'books/search_books.html',
+    {})
+
+
 
